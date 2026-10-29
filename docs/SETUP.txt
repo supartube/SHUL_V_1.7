@@ -1,0 +1,42 @@
+SHUL_V_1.7 — SETUP QUICK GUIDE
+
+WINDOWS
+1. Install Python 3.11 or 3.12.
+2. Extract SHUL_V_1.7.zip to a normal folder.
+3. Open PowerShell in that folder.
+4. Run:
+   python -m venv .venv
+   .venv\Scripts\Activate.ps1
+   pip install -r requirements.txt
+   copy .env.example .env
+   uvicorn app.main:app --reload
+5. Browser: http://127.0.0.1:8000/docs
+
+LINUX
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+TEST
+GET  /health
+GET  /api/agents
+POST /api/tasks
+Body:
+{"command":"Create a portfolio website plan","mode":"software"}
+GET /api/reports/1
+
+KALI LAB
+- Use a dedicated Kali VM and isolated host-only network.
+- The app defaults to dry-run.
+- Add authorized hosts to AUTHORIZED_LAB_TARGETS in .env.
+- Only test systems you own or have explicit written permission to test.
+- Real tool execution is intentionally not implemented in this starter.
+
+ONLINE DEPLOYMENT
+- Push source to a private GitHub repository.
+- Deploy with Render using the included render.yaml or Dockerfile.
+- Add secrets in the host's Environment settings; never commit .env.
+- Set a persistent disk/database before relying on stored data.
+- Add authentication before making it publicly accessible.
