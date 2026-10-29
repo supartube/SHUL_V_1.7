@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+workspace/generated/*
+!workspace/generated/.gitkeep
+.pytest_cache/

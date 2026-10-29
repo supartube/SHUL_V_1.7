@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shul-v-1-7
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: SECURITY_TOOLS_DRY_RUN
+        value: "true"
+      - key: ENABLE_LLM
+        value: "false"
